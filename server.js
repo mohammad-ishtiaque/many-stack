@@ -1,8 +1,8 @@
 // src/server.js
 const app = require('./app');
+const HOST = require('./src/util/getip');
+const PORT = process.env.PORT || 5000;
 
-const PORT = process.env.PORT_URL;
-
-app.listen(PORT, () => {
-  console.log(`🚐 RV SaaS backend is running on port ${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Many-Stack backend is running at http://${HOST}:${PORT}`);
 });

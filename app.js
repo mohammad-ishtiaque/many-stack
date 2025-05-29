@@ -1,19 +1,21 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const connectDB = require('./src/connection/connectDB');
 const app = express();
+const dotenv = require('dotenv');
+const path = require('path');
 
-// const routes = require('./routes');
+dotenv.config();
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// DB Connection
+connectDB();
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
-// app.use('/api', routes);
 app.get('/', (req, res) => {
-  res.send('Welcome to the API!');
+  res.send('Welcome to the RV SaaS Backend!');
 });
 
-// Export the app for testing purposes
 module.exports = app;
